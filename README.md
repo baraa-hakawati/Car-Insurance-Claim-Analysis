@@ -1,47 +1,83 @@
-# 🚗 Car Insurance Claim Analysis
+# 🧠 Car Insurance Claim Prediction: Exploratory Analysis and Machine Learning
 
-## 📌 Overview
-
-This project analyzes car insurance claim data to identify factors influencing claim occurrences. By examining various customer and vehicle attributes, we aim to uncover patterns that can assist insurance companies in risk assessment and policy structuring.
-
-## 📊 Dataset Description
-
-- **Total Records:** 10,000
-- **Features:** 19 (including demographic, vehicle, and driving history attributes)
-- **Target Variable:** `OUTCOME` (indicates whether a claim was made)
-
-## 🧹 Data Preprocessing
-
-- **Missing Values:** Handled using `SimpleImputer` with appropriate strategies for different data types.
-- **Categorical Encoding:**
-  - *Ordinal Features:* Encoded using `OrdinalEncoder` with defined category orders.
-  - *Nominal Features:* Encoded using `OneHotEncoder`.
-- **Feature Scaling:** Applied `StandardScaler` to numerical features.
-- **Pipeline Construction:** Utilized `ColumnTransformer` and `Pipeline` to streamline preprocessing steps.
-
-## 📈 Exploratory Data Analysis (EDA)
-
-- **Demographic Insights:** Analyzed distributions of age, gender, race, education, and income.
-- **Driving History:** Examined the impact of driving experience, past accidents, DUIs, and speeding violations on claim likelihood.
-- **Vehicle Attributes:** Investigated the relationship between vehicle type/year and claim occurrences.
-- **Visualizations:** Employed bar plots and count plots to illustrate feature distributions and their correlation with the target variable.
-
-## 🤖 Modeling Approach
-
-- **Model Used:** Random Forest Classifier
-- **Evaluation Metrics:** Accuracy, Precision, Recall, F1-Score
-- **Feature Importance:** Assessed using permutation importance to determine the most influential features on claim prediction.
-
-## 🔍 Key Findings
-
-- **High-Risk Factors:** Past accidents, DUIs, and speeding violations significantly increase claim probability.
-- **Demographic Influence:** Certain age groups and income levels show varying claim tendencies.
-- **Vehicle Impact:** Newer vehicles and specific types correlate with different claim rates.
-
-## 📂 Repository Structure
-
-- `Car_Insurance_Claim_Analysis.ipynb`: Main analysis notebook containing data preprocessing, EDA, modeling, and conclusions.
+This project presents a data science pipeline that aims to predict the likelihood of car insurance claims using machine learning techniques. It includes comprehensive steps such as data cleaning, exploratory analysis, feature engineering, model training, and evaluation.
 
 ---
 
-*Note: For detailed code and visualizations, please refer to the [Car_Insurance_Claim_Analysis.ipynb](https://github.com/baraa-hakawati/Car-Insurance-Claim-Analysis/blob/main/Car_Insurance_Claim_Analysis.ipynb) notebook.*
+## 📂 Dataset Overview
+
+The dataset contains customer demographics, driving history, vehicle characteristics, and past claim data. The main target is the `OUTCOME` column, where:
+- `0` = No claim filed
+- `1` = Claim filed
+
+---
+
+## 🔍 Exploratory Data Analysis (EDA)
+
+### 🔗 Correlation Heatmap
+
+A correlation heatmap was generated to visualize how features relate to each other and to the target variable `OUTCOME`. Key takeaways:
+
+- **Negatively correlated with OUTCOME**:
+  - `VEHICLE_OWNERSHIP` (-0.38)
+  - `CREDIT_SCORE` (-0.33)
+  - `PAST_ACCIDENTS` (-0.31)
+  - `SPEEDING_VIOLATIONS` (-0.29)
+
+These features are considered impactful for prediction modeling.
+
+![Feature Correlation Heatmap](images/corr.png)
+
+---
+
+## 💡 Feature Importance
+
+Feature importance was assessed using permutation importance to identify which attributes most influence the prediction. The top 10 features are:
+
+1. `DRIVING_EXPERIENCE`
+2. `VEHICLE_OWNERSHIP`
+3. `VEHICLE_YEAR`
+4. `POSTAL_CODE`
+5. `GENDER`
+6. `PAST_ACCIDENTS`
+7. `SPEEDING_VIOLATIONS`
+8. `RACE`
+9. `DUIS`
+10. `VEHICLE_TYPE`
+
+These were prioritized during model training and evaluation.
+
+![Feature Importance](images/Feature importance.png)
+
+---
+
+## 🤖 Model Training & Evaluation
+
+A classification model was built using the most important features. Below are the performance metrics on the test data:
+
+| Metric        | Class 0 (No Claim) | Class 1 (Claim) |
+|---------------|-------------------|-----------------|
+| Precision     | 0.86              | 0.76            |
+| Recall        | 0.90              | 0.67            |
+| F1-Score      | 0.88              | 0.71            |
+| **Accuracy**  | **0.83** (overall) |                 |
+
+- The model is particularly effective at identifying customers unlikely to file claims.
+- Recall for claim cases can be further improved through class rebalancing or threshold tuning.
+
+---
+
+## ✅ Key Insights
+
+- Features like driving experience, vehicle year, and ownership status play a vital role in risk prediction.
+- Model performance is strong, with over **83% accuracy**, though precision-recall balance for claimers (minority class) should be optimized.
+- Future improvements may include:
+  - Addressing class imbalance (e.g., using SMOTE)
+  - Testing ensemble models (Random Forest, XGBoost, LightGBM)
+  - Feature interaction exploration
+  - Hyperparameter optimization
+
+---
+
+## 📁 Project Structure
+
