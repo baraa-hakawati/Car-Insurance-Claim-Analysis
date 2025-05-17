@@ -47,7 +47,7 @@ Feature importance was assessed using permutation importance to identify which a
 
 These were prioritized during model training and evaluation.
 
-![Feature Importance](images/Feature importance.png)
+![Feature Importance](images/Feature_importance.png)
 
 ---
 
@@ -79,5 +79,7 @@ A classification model was built using the most important features. Below are th
 
 ---
 
-## 📁 Project Structure
 
+For further information:  
+📧 Contact: bara-hakawati@hotmail.com 
+📂 Full Analysis: [Retail_Sales_Prediction.ipynb](Car_Insurance_Claim_Analysis.ipynb)  
