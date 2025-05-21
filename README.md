@@ -82,4 +82,5 @@ A classification model was built using the most important features. Below are th
 
 For further information:  
 📧 Contact: bara-hakawati@hotmail.com 
-📂 Full Analysis: [Retail_Sales_Prediction.ipynb](Car_Insurance_Claim_Analysis.ipynb)  
+📂 Full Analysis: [Car Insurance Claim Analysis
+.ipynb](Car_Insurance_Claim_Analysis.ipynb)  
